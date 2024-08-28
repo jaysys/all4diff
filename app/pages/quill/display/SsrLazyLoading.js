@@ -56,15 +56,6 @@ function DisplayContent({ contentList = [] }) {
 function ContentWrapper({ imageUrl, children }) {
   return (
     <div style={contentWrapperStyle}>
-      {/* <Image
-        src={imageUrl}
-        alt="Background Image"
-        layout="fill" // Fills the parent container
-        objectFit="cover" // Ensure the image covers the container
-        quality={100} // Adjust the quality of the image
-        // Removed placeholder property
-      /> */}
-
       <Image
         src={imageUrl}
         alt="Background Image"
