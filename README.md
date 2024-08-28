@@ -6,7 +6,7 @@ npm run dev
 
 ## case.1 csr/ssr/isr/ssg
 
-http://localhost:3000/pages/rendering
+http://localhost:3000/pages/all4
 
 ## case.2 csr vs. ssr diff using mockserver http://xxxx.mockapi.io
 
@@ -23,9 +23,9 @@ npm install sqlite sqlite
 npm install react-quill
 ```
 
-http://localhost:3000/pages/quill/display
+http://localhost:3000/pages/quill/display (출력)
 
-http://localhost:3000/pages/quill
+http://localhost:3000/pages/quill (입력창)
 
 ---
 
