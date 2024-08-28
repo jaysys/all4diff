@@ -76,7 +76,6 @@ export default async function Display() {
 
   // Example image URLs
   const imageUrl1 = "https://picsum.photos/id/10/400/300";
-  // const imageUrl2 = "https://picsum.photos/id/20/400/300";
 
   if (error) return <p>Error loading content: {error}</p>;
 
@@ -87,11 +86,6 @@ export default async function Display() {
         <hr />
         <DisplayContent contentList={contentList} />
       </ContentWrapper>
-      {/* <ContentWrapper imageUrl={imageUrl2}>
-        <h1>Content SSR View #2</h1>
-        <hr />
-        <DisplayContent contentList={contentList} />
-      </ContentWrapper> */}
     </div>
   );
 }
