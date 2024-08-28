@@ -1,12 +1,3 @@
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   images: {
-//     domains: ["picsum.photos"], // Add 'picsum.photos' to the allowed domains
-//   },
-// };
-
-// export default nextConfig;
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -14,6 +5,11 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "www.changsaone.com",
+        pathname: "/assets/img/**", // Allows all images in this directory
       },
     ],
   },

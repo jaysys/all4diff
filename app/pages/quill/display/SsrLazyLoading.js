@@ -56,14 +56,24 @@ function DisplayContent({ contentList = [] }) {
 function ContentWrapper({ imageUrl, children }) {
   return (
     <div style={contentWrapperStyle}>
-      <Image
+      {/* <Image
         src={imageUrl}
         alt="Background Image"
         layout="fill" // Fills the parent container
         objectFit="cover" // Ensure the image covers the container
         quality={100} // Adjust the quality of the image
         // Removed placeholder property
+      /> */}
+
+      <Image
+        src={imageUrl}
+        alt="Background Image"
+        fill // Replaces `layout="fill"`
+        style={{ objectFit: "cover" }} // Replaces `objectFit="cover"`
+        quality={100} // Adjust the quality of the image
+        // Removed placeholder property
       />
+
       <div style={{ position: "relative", zIndex: 1 }}>{children}</div>
     </div>
   );
@@ -82,6 +92,7 @@ export default async function Display() {
 
   // Example image URLs
   const imageUrl1 = "https://picsum.photos/id/10/400/300";
+  //const imageUrl1 = "https://www.changsaone.com/assets/img/visual_01.png";
 
   if (error) return <p>Error loading content: {error}</p>;
 
