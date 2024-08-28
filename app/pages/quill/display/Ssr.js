@@ -81,6 +81,7 @@ export default async function Display() {
 
   // Example image URLs
   const imageUrl1 = "https://picsum.photos/id/10/400/300";
+  // const imageUrl1 = "https://www.changsaone.com/assets/img/visual_01.png"; //
 
   if (error) return <p>Error loading content: {error}</p>;
 
