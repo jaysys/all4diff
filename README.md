@@ -235,3 +235,21 @@ export default async function Display() {
   - Since `createImageBitmap` was a browser-specific API, replacing it with `probe-image-size` allows the code to run correctly on the server during SSR.
 
 With these changes, your Next.js page will render the image and its metadata on the server side without encountering errors related to unsupported browser APIs.
+
+### for lazy loading
+
+Lazy Loading
+지연 로딩: 이미지가 화면에 보일 때만 로드하도록 지연 로딩을 적용합니다. Next.js의 Image 컴포넌트는 기본적으로 lazy loading을 지원합니다.
+
+next.config.mjs
+
+```
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    domains: ["picsum.photos"], // Add 'picsum.photos' to the allowed domains
+  },
+};
+
+export default nextConfig;
+```

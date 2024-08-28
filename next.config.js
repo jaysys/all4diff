@@ -1,8 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+// next.config.js
+module.exports = {
   images: {
     domains: ["picsum.photos"], // Add 'picsum.photos' to the allowed domains
   },
 };
-
-export default nextConfig;

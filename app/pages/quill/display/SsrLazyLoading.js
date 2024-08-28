@@ -1,5 +1,5 @@
 import "react-quill/dist/quill.snow.css";
-import probe from "probe-image-size";
+import Image from "next/image";
 
 // Styles for content reset
 const resetStyle = {
@@ -14,10 +14,8 @@ const resetStyle = {
 
 // Styles for each content wrapper
 const contentWrapperStyle = {
-  backgroundSize: "cover",
-  backgroundPosition: "center",
+  position: "relative",
   minHeight: "200px",
-  backgroundRepeat: "no-repeat",
   borderRadius: "8px",
   padding: "20px",
   margin: "10px",
@@ -39,16 +37,6 @@ async function getContent() {
   return res.json();
 }
 
-// Function to fetch image metadata using probe-image-size
-async function getImageData(imageUrl) {
-  const result = await probe(imageUrl);
-  return {
-    url: imageUrl,
-    width: result.width,
-    height: result.height,
-  };
-}
-
 // Component to display content
 function DisplayContent({ contentList = [] }) {
   return contentList.length > 0 ? (
@@ -64,19 +52,19 @@ function DisplayContent({ contentList = [] }) {
   );
 }
 
-// Component to wrap content with background image
-function ContentWrapper({ imageData, children }) {
-  const style = {
-    ...contentWrapperStyle,
-    backgroundImage: `url(${imageData.url})`,
-  };
-
+// Component to wrap content with an image
+function ContentWrapper({ imageUrl, children }) {
   return (
-    <div style={style}>
-      {/* <p>
-        Image Dimensions: {imageData.width} x {imageData.height}
-      </p> */}
-      {children}
+    <div style={contentWrapperStyle}>
+      <Image
+        src={imageUrl}
+        alt="Background Image"
+        layout="fill" // Fills the parent container
+        objectFit="cover" // Ensure the image covers the container
+        quality={100} // Adjust the quality of the image
+        // Removed placeholder property
+      />
+      <div style={{ position: "relative", zIndex: 1 }}>{children}</div>
     </div>
   );
 }
@@ -84,22 +72,23 @@ function ContentWrapper({ imageData, children }) {
 // Main page component with SSR data fetching
 export default async function Display() {
   let contentList = [];
-  let imageData = null;
   let error = null;
 
   try {
     contentList = await getContent();
-    imageData = await getImageData("https://picsum.photos/id/10/400/300");
   } catch (err) {
     error = err.message;
   }
+
+  // Example image URLs
+  const imageUrl1 = "https://picsum.photos/id/10/400/300";
 
   if (error) return <p>Error loading content: {error}</p>;
 
   return (
     <div style={{ display: "flex" }}>
-      <ContentWrapper imageData={imageData}>
-        <h1>Content SSR+ View #1</h1>
+      <ContentWrapper imageUrl={imageUrl1}>
+        <h1>Content SSR Lazy #1</h1>
         <hr />
         <DisplayContent contentList={contentList} />
       </ContentWrapper>

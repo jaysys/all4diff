@@ -1,4 +1,5 @@
 import "react-quill/dist/quill.snow.css";
+import Image from "next/image";
 
 // Styles for content reset
 const resetStyle = {
@@ -55,12 +56,16 @@ function DisplayContent({ contentList = [] }) {
 
 // Component to wrap content with background image
 function ContentWrapper({ imageUrl, children }) {
-  const style = {
-    ...contentWrapperStyle,
-    backgroundImage: `url(${imageUrl})`,
-  };
-
-  return <div style={style}>{children}</div>;
+  return (
+    <div
+      style={{
+        ...contentWrapperStyle,
+        backgroundImage: `url(${imageUrl})`,
+      }}
+    >
+      {children}
+    </div>
+  );
 }
 
 // Main page component with SSR data fetching

@@ -1,6 +1,6 @@
 import React from "react";
 import PageSsr from "./Ssr";
-import PageSsrPlus from "./SsrPlus";
+import PageSsrLazy from "./SsrLazyLoading";
 import PageCsr from "./Csr";
 
 function Main() {
@@ -8,7 +8,7 @@ function Main() {
     <div style={{ display: "flex", flexDirection: "row" }}>
       <PageCsr />
       <PageSsr />
-      <PageSsrPlus />
+      <PageSsrLazy />
     </div>
   );
 }
